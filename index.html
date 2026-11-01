@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Sharpen your math skills in a fiery showdown. Solve equations, strike the dragon, and save your knight."
+    />
+    <meta name="theme-color" content="#11100f" />
+    <title>Dragon's Trial — Math Meets Myth</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Spectral:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-glow page-glow-top" aria-hidden="true"></div>
+    <div class="page-glow page-glow-bottom" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <a class="brand" href="#" aria-label="Dragon's Trial home">
+        <span class="brand-sigil" aria-hidden="true">✦</span>
+        <span>DRAGON'S <span>TRIAL</span></span>
+      </a>
+      <a class="header-link" href="#how-to-play">
+        HOW TO PLAY <span aria-hidden="true">↗</span>
+      </a>
+    </header>
+
+    <main class="page-shell">
+      <section class="intro" aria-labelledby="page-title">
+        <div class="intro-copy">
+          <span class="eyebrow"><span class="eyebrow-dot"></span> A QUEST FOR QUICK THINKERS</span>
+          <h1 id="page-title">Wits sharp.<br /><span>Sword ready.</span></h1>
+          <p>
+            Every answer is a strike. Every second, the dragon gets closer.
+            Think fast, brave knight.
+          </p>
+        </div>
+        <div class="intro-note" aria-hidden="true">
+          <span class="note-star">✳</span>
+          <span>THE FATE OF<br />THE KINGDOM<br /><em>is in your hands</em></span>
+        </div>
+      </section>
+
+      <section class="game-layout" id="arena" aria-label="Dragon's Trial game">
+        <div class="battle-card" id="battleCard">
+          <div class="battle-heading">
+            <div class="battle-title">
+              <span class="live-indicator" aria-hidden="true"></span>
+              <span>THE ASHEN ARENA</span>
+            </div>
+            <span class="battle-round" id="roundLabel">ROUND 01</span>
+          </div>
+
+          <div class="combatants">
+            <div class="health-block dragon-health">
+              <div class="health-copy">
+                <span class="health-name"><span aria-hidden="true">♨</span> THE WYRMWOOD DRAKE</span>
+                <span class="health-number" id="dragonHealthText">100 <small>/ 100</small></span>
+              </div>
+              <div
+                class="health-track"
+                role="progressbar"
+                aria-label="Dragon health"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow="100"
+                id="dragonHealthTrack"
+              >
+                <span class="health-fill" id="dragonHealthFill"></span>
+              </div>
+            </div>
+
+            <div class="versus-mark" aria-hidden="true">VS</div>
+
+            <div class="health-block knight-health">
+              <div class="health-copy">
+                <span class="health-name"><span aria-hidden="true">♜</span> YOUR KNIGHT</span>
+                <span class="health-number" id="knightHealthText">100 <small>/ 100</small></span>
+              </div>
+              <div
+                class="health-track"
+                role="progressbar"
+                aria-label="Knight health"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow="100"
+                id="knightHealthTrack"
+              >
+                <span class="health-fill" id="knightHealthFill"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="arena-scene" id="arenaScene">
+            <div class="scene-sky" aria-hidden="true">
+              <span class="sky-moon"></span>
+              <span class="sky-star star-one">✦</span>
+              <span class="sky-star star-two">·</span>
+              <span class="sky-star star-three">✧</span>
+              <span class="mountain mountain-back"></span>
+              <span class="mountain mountain-front"></span>
+              <span class="scene-ruin ruin-left"></span>
+              <span class="scene-ruin ruin-right"></span>
+            </div>
+
+            <div class="scene-label dragon-label">
+              <span class="label-icon">♨</span>
+              <span>THE OLD FLAME</span>
+            </div>
+            <div class="dragon-figure" id="dragonFigure" aria-label="A red dragon faces your knight">
+              <div class="dragon-aura"></div>
+              <svg viewBox="0 0 300 260" role="img" aria-label="Illustration of a fire-breathing dragon">
+                <defs>
+                  <linearGradient id="dragonScales" x1="0" x2="1" y1="0" y2="1">
+                    <stop offset="0" stop-color="#f17b43" />
+                    <stop offset="0.55" stop-color="#b83d31" />
+                    <stop offset="1" stop-color="#612c34" />
+                  </linearGradient>
+                  <linearGradient id="dragonWing" x1="0" x2="1" y1="0" y2="1">
+                    <stop offset="0" stop-color="#a84a40" />
+                    <stop offset="1" stop-color="#4c2933" />
+                  </linearGradient>
+                </defs>
+                <path d="M92 121C48 94 32 48 40 22c26 21 56 24 83 63l-31 36Z" fill="url(#dragonWing)" stroke="#d66a47" stroke-width="3" />
+                <path d="M84 113C62 80 58 54 54 37c22 18 42 27 64 54" fill="none" stroke="#dc8155" stroke-width="2" opacity=".8" />
+                <path d="M153 117c28-38 75-53 121-42-24 13-38 32-48 59l-69 31-4-48Z" fill="url(#dragonWing)" stroke="#d66a47" stroke-width="3" />
+                <path d="M186 134c28-25 55-39 76-45-14 17-21 34-28 55" fill="none" stroke="#dc8155" stroke-width="2" opacity=".8" />
+                <path d="M105 168c-45 23-68 5-78 14 24 14 55 18 83 3" fill="none" stroke="#a94135" stroke-width="12" stroke-linecap="round" />
+                <path d="M115 153c-6 28-8 43-21 57l27 2 20-29 17 29 30-1-20-51" fill="#792f34" stroke="#e36b48" stroke-width="3" stroke-linejoin="round" />
+                <path d="M91 125c13-23 42-38 69-30 20 6 36 25 36 48 0 30-28 49-66 44-32-4-52-28-39-62Z" fill="url(#dragonScales)" stroke="#f08b54" stroke-width="3" />
+                <path d="M165 111c16-16 32-29 49-26l22 10-16 15 22 9-27 21-39-4" fill="url(#dragonScales)" stroke="#e7784b" stroke-width="3" stroke-linejoin="round" />
+                <path d="m205 88 8-18 10 18M222 91l15-14-2 23" fill="#f3bd76" stroke="#f3bd76" stroke-width="3" stroke-linejoin="round" />
+                <path d="M200 106c7-5 14-4 18 1" fill="none" stroke="#ffd277" stroke-width="4" stroke-linecap="round" />
+                <circle cx="211" cy="106" r="2" fill="#392129" />
+                <path d="M236 119c19 4 25 12 38 7-8 14-20 18-34 15" fill="#d55c3b" />
+                <path d="M237 123c15 7 28 8 43 2-12 13-24 18-40 16" fill="#ffc066" opacity=".92" />
+                <path d="m119 145 10 5 9-6 10 6 9-5 10 5" fill="none" stroke="#f5a35b" stroke-width="3" opacity=".75" />
+                <path d="M122 203l-7 13h20M172 203l8 13h18" fill="none" stroke="#ef9b5b" stroke-width="5" stroke-linecap="round" />
+              </svg>
+            </div>
+
+            <div class="scene-label knight-label">
+              <span class="label-icon">♜</span>
+              <span>THE LAST KNIGHT</span>
+            </div>
+            <div class="knight-figure" id="knightFigure" aria-label="A brave knight with a sword and shield">
+              <div class="knight-aura"></div>
+              <svg id="knightArtwork" viewBox="0 0 190 260" role="img" aria-label="Illustration of an armored knight holding a sword">
+                <defs>
+                  <linearGradient id="armor" x1="0" x2="1" y1="0" y2="1">
+                    <stop offset="0" stop-color="var(--knight-armor-light)" />
+                    <stop offset=".45" stop-color="var(--knight-armor-mid)" />
+                    <stop offset="1" stop-color="var(--knight-armor-dark)" />
+                  </linearGradient>
+                  <linearGradient id="cape" x1="0" x2="1" y1="0" y2="1">
+                    <stop offset="0" stop-color="var(--knight-cape-light)" />
+                    <stop offset="1" stop-color="var(--knight-cape-dark)" />
+                  </linearGradient>
+                </defs>
+                <path d="M66 79c-22 13-33 38-28 71l-19 56 47-5 25-66" fill="url(#cape)" stroke="var(--knight-cape-trim)" stroke-width="3" />
+                <path d="M74 89c13-9 31-7 42 4l13 51-18 42-54-4-12-47 15-37Z" fill="url(#armor)" stroke="var(--knight-trim)" stroke-width="3" />
+                <path d="M73 87c1-21 11-35 26-35 16 0 26 15 25 35l-25 17-26-17Z" fill="var(--knight-helmet)" stroke="var(--knight-trim-light)" stroke-width="3" />
+                <path d="M76 84h45l-6 14H83l-7-14Z" fill="var(--knight-visor)" />
+                <path d="m84 85 1 11m11-11v11m11-11v11" stroke="var(--knight-accent)" stroke-width="2" />
+                <path d="M70 113c-11 7-15 18-21 31" fill="none" stroke="var(--knight-armor-light)" stroke-width="12" stroke-linecap="round" />
+                <path d="M127 113c12 4 19 13 27 23" fill="none" stroke="var(--knight-armor-light)" stroke-width="12" stroke-linecap="round" />
+                <circle cx="155" cy="136" r="6" fill="var(--knight-armor-mid)" stroke="var(--knight-trim)" stroke-width="2" />
+                <path d="m51 144 6 9-9 13c-10-5-16-16-15-28 7-2 13 0 18 6Z" fill="var(--knight-shield)" stroke="var(--knight-trim)" stroke-width="3" />
+                <g id="knightCrest" fill="var(--knight-accent)" stroke="var(--knight-trim-light)" stroke-linejoin="round" stroke-width=".8" aria-hidden="true">
+                  <path class="crest-star" d="m47 141 1.8 5 5.2.2-4 3.2 1.4 5-4.4-2.8-4.4 2.8 1.4-5-4-3.2 5.2-.2Z" />
+                  <path class="crest-moon" d="M49 141a5.5 5.5 0 1 0 4.5 9.2 4.5 4.5 0 1 1-4.5-9.2Z" />
+                  <path class="crest-diamond" d="m47 141 5.5 7-5.5 7-5.5-7Z" />
+                  <path class="crest-cross" d="M45 142h4v4h4v4h-4v4h-4v-4h-4v-4h4Z" />
+                </g>
+                <g id="knightWeapon" aria-hidden="true">
+                  <path class="weapon weapon-sword" d="m146 138 8-7 4-59 6-16 6 16-2 61-10 14-12-9Z" fill="var(--knight-blade)" stroke="var(--knight-trim-light)" stroke-width="3" />
+                  <g class="weapon weapon-spear">
+                    <path d="m158 135 3-81 3-18 5 17-2 82-5 11Z" fill="var(--knight-blade)" stroke="var(--knight-trim-light)" stroke-width="3" stroke-linejoin="round" />
+                    <path d="m156 96 10-1m-11 20 10-1" fill="none" stroke="var(--knight-accent)" stroke-width="2" />
+                  </g>
+                  <g class="weapon weapon-axe">
+                    <path d="m156 137 5-70" fill="none" stroke="var(--knight-trim-light)" stroke-width="4" stroke-linecap="round" />
+                    <path d="M159 82c-17-2-26-14-25-30 10 3 14-4 21-15 9 12 22 17 21 32-1 8-7 13-17 13Z" fill="var(--knight-blade)" stroke="var(--knight-trim-light)" stroke-width="3" stroke-linejoin="round" />
+                    <path d="m158 66 8 9" fill="none" stroke="var(--knight-accent)" stroke-width="2" stroke-linecap="round" />
+                  </g>
+                  <g class="weapon weapon-hammer">
+                    <path d="m157 137 5-67" fill="none" stroke="var(--knight-trim-light)" stroke-width="4" stroke-linecap="round" />
+                    <path d="m147 53 24 2 6 10-3 15-24-2-6-10Z" fill="var(--knight-blade)" stroke="var(--knight-trim-light)" stroke-width="3" stroke-linejoin="round" />
+                    <path d="m148 63 26 2" fill="none" stroke="var(--knight-accent)" stroke-width="2" />
+                  </g>
+                </g>
+                <path d="m60 179 56 4-3 14-51-3-2-15Z" fill="var(--knight-armor-mid)" stroke="var(--knight-trim)" stroke-width="3" />
+                <path d="m68 196-5 35 20 2 9-34m10 3 6 32 22-2-9-34" fill="var(--knight-armor-dark)" stroke="var(--knight-trim)" stroke-width="3" />
+                <path d="m62 232-4 8h29l-4-8m28 0-3 8h31l-9-9" fill="var(--knight-boot)" stroke="var(--knight-trim-light)" stroke-width="2" />
+              </svg>
+            </div>
+
+            <div class="scene-ground" aria-hidden="true">
+              <span class="ground-crack crack-one"></span>
+              <span class="ground-crack crack-two"></span>
+              <span class="ember ember-one"></span>
+              <span class="ember ember-two"></span>
+              <span class="ember ember-three"></span>
+              <span class="ground-line"></span>
+            </div>
+            <div class="arena-message" id="arenaMessage" role="status" aria-live="polite">
+              <span class="message-spark">✦</span>
+              <span>The wyrm stirs in its lair. Draw your sword when you're ready.</span>
+            </div>
+          </div>
+
+          <div class="arena-footer">
+            <span class="arena-footer-label"><span class="pulse-dot"></span> THE DUEL IS YOURS TO WIN</span>
+            <span class="arena-footer-tip">Answer correctly to strike <span aria-hidden="true">↗</span></span>
+          </div>
+        </div>
+
+        <aside class="challenge-panel" aria-label="Math challenge">
+          <div class="challenge-top">
+            <span class="panel-eyebrow">YOUR MOVE</span>
+            <span class="streak-chip" id="streakChip"><span aria-hidden="true">✦</span> STREAK <strong id="streakCount">0</strong></span>
+          </div>
+
+          <div class="question-area">
+            <p class="question-hint" id="questionHint">A quiet moment before the storm</p>
+            <div class="equation" id="equation" aria-live="polite" aria-label="Start the battle to see your first equation">? <span>+</span> ? <span>=</span> ?</div>
+          </div>
+
+          <form class="answer-form" id="answerForm">
+            <label for="answerInput">YOUR ANSWER</label>
+            <div class="answer-input-wrap">
+              <input
+                id="answerInput"
+                name="answer"
+                type="text"
+                inputmode="numeric"
+                autocomplete="off"
+                maxlength="8"
+                placeholder="?"
+                aria-describedby="answerFeedback"
+                disabled
+              />
+              <span class="input-sigil" aria-hidden="true">✧</span>
+            </div>
+            <p class="answer-feedback" id="answerFeedback" role="status" aria-live="polite">The answer is your weapon.</p>
+            <button class="strike-button" id="strikeButton" type="submit" disabled>
+              <span>STRIKE THE DRAGON</span><span class="button-arrow" aria-hidden="true">↗</span>
+            </button>
+          </form>
+
+          <div class="attack-clock" aria-label="Time until the dragon attacks">
+            <div class="clock-topline">
+              <span><span class="clock-icon" aria-hidden="true">◷</span> NEXT FLAME</span>
+              <strong id="attackCountdown">—</strong>
+            </div>
+            <div class="clock-track">
+              <span id="attackTimerFill"></span>
+            </div>
+            <p>The dragon attacks when the timer runs out.</p>
+          </div>
+
+          <div class="difficulty-area">
+            <div class="difficulty-heading">
+              <span>CHOOSE YOUR TRIAL</span>
+              <span id="difficultyDescriptor">Level 1 · Addition</span>
+            </div>
+            <div class="difficulty-options" role="group" aria-label="Choose difficulty">
+              <button class="difficulty-option is-selected" type="button" data-difficulty="1" aria-label="Level 1: Addition" aria-pressed="true">
+                <span class="difficulty-rank">1</span><span class="difficulty-topic">Add</span>
+              </button>
+              <button class="difficulty-option" type="button" data-difficulty="2" aria-label="Level 2: Subtraction" aria-pressed="false">
+                <span class="difficulty-rank">2</span><span class="difficulty-topic">Subtract</span>
+              </button>
+              <button class="difficulty-option" type="button" data-difficulty="3" aria-label="Level 3: Multiplication" aria-pressed="false">
+                <span class="difficulty-rank">3</span><span class="difficulty-topic">Times</span>
+              </button>
+              <button class="difficulty-option" type="button" data-difficulty="4" aria-label="Level 4: Division" aria-pressed="false">
+                <span class="difficulty-rank">4</span><span class="difficulty-topic">Divide</span>
+              </button>
+              <button class="difficulty-option" type="button" data-difficulty="5" aria-label="Level 5: Order of operations" aria-pressed="false">
+                <span class="difficulty-rank">5</span><span class="difficulty-topic">Order</span>
+              </button>
+              <button class="difficulty-option" type="button" data-difficulty="6" aria-label="Level 6: Powers and roots" aria-pressed="false">
+                <span class="difficulty-rank">6</span><span class="difficulty-topic">Powers</span>
+              </button>
+              <button class="difficulty-option" type="button" data-difficulty="7" aria-label="Level 7: Fractions and percentages" aria-pressed="false">
+                <span class="difficulty-rank">7</span><span class="difficulty-topic">Fractions</span>
+              </button>
+              <button class="difficulty-option" type="button" data-difficulty="8" aria-label="Level 8: Algebra" aria-pressed="false">
+                <span class="difficulty-rank">8</span><span class="difficulty-topic">Algebra</span>
+              </button>
+              <button class="difficulty-option" type="button" data-difficulty="9" aria-label="Level 9: Trigonometry" aria-pressed="false">
+                <span class="difficulty-rank">9</span><span class="difficulty-topic">Trig</span>
+              </button>
+              <button class="difficulty-option" type="button" data-difficulty="10" aria-label="Level 10: Calculus and trigonometry" aria-pressed="false">
+                <span class="difficulty-rank">10</span><span class="difficulty-topic">Calculus</span>
+              </button>
+            </div>
+            <div class="pace-heading">
+              <span>DRAGON ATTACK SPEED</span>
+              <span id="paceDescriptor">Easy · 14 seconds</span>
+            </div>
+            <div class="pace-options" role="group" aria-label="Choose dragon attack speed">
+              <button class="pace-option is-selected" type="button" data-pace="easy" aria-pressed="true">Easy</button>
+              <button class="pace-option" type="button" data-pace="medium" aria-pressed="false">Medium</button>
+              <button class="pace-option" type="button" data-pace="hard" aria-pressed="false">Hard</button>
+            </div>
+          </div>
+
+          <div class="knight-name-field">
+            <label for="knightName">YOUR KNIGHT'S NAME</label>
+            <input id="knightName" type="text" maxlength="24" autocomplete="nickname" placeholder="Enter a name to begin" required />
+          </div>
+
+          <button class="begin-button" id="beginButton" type="button">
+            <span class="begin-sigil" aria-hidden="true">⚔</span>
+            <span id="beginButtonText">BEGIN THE BATTLE</span>
+            <span class="begin-arrow" aria-hidden="true">→</span>
+          </button>
+          <p class="challenge-status" id="gameStatus" role="status" aria-live="polite">Choose a trial, then begin your battle.</p>
+        </aside>
+      </section>
+
+      <section class="leaderboard-panel" id="leaderboard" aria-labelledby="leaderboard-title">
+        <div class="leaderboard-heading">
+          <div class="leaderboard-title-wrap">
+            <span class="guide-icon leaderboard-icon" aria-hidden="true">♛</span>
+            <div>
+              <span class="panel-eyebrow">THE HALL OF LEGENDS</span>
+              <h2 id="leaderboard-title">Local Leaderboard</h2>
+              <p class="leaderboard-scoring">+100 per strike · −25 per flame · +500 victory bonus</p>
+              <p class="leaderboard-scope" id="leaderboardScope">Shared scores require Supabase setup</p>
+            </div>
+          </div>
+          <div class="leaderboard-filters">
+            <label class="sr-only" for="leaderboardPace">Filter by attack difficulty</label>
+            <select id="leaderboardPace">
+              <option value="">All attack speeds</option>
+              <option value="easy">Easy</option>
+              <option value="medium">Medium</option>
+              <option value="hard">Hard</option>
+            </select>
+            <label class="sr-only" for="leaderboardTrial">Filter by math trial</label>
+            <select id="leaderboardTrial">
+              <option value="">All math trials</option>
+              <option value="1">Level 1 · Addition</option>
+              <option value="2">Level 2 · Subtraction</option>
+              <option value="3">Level 3 · Multiplication</option>
+              <option value="4">Level 4 · Division</option>
+              <option value="5">Level 5 · Order of operations</option>
+              <option value="6">Level 6 · Powers and roots</option>
+              <option value="7">Level 7 · Fractions and percentages</option>
+              <option value="8">Level 8 · Algebra</option>
+              <option value="9">Level 9 · Trigonometry</option>
+              <option value="10">Level 10 · Calculus</option>
+            </select>
+          </div>
+        </div>
+        <div class="leaderboard-table-wrap">
+          <table class="leaderboard-table">
+            <thead>
+              <tr>
+                <th scope="col">RANK</th>
+                <th scope="col">KNIGHT</th>
+                <th scope="col">SCORE</th>
+                <th scope="col">MATH TRIAL</th>
+                <th scope="col">ATTACK SPEED</th>
+                <th scope="col">RESULT</th>
+              </tr>
+            </thead>
+            <tbody id="leaderboardRows">
+              <tr><td class="leaderboard-message" colspan="6">Loading the hall of legends…</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="leaderboard-footer">
+          <div>
+            <p id="leaderboardStatus" role="status" aria-live="polite">Connecting to the public leaderboard…</p>
+            <p class="leaderboard-note">Local scores stay in this browser. Public scores and names are visible to everyone and are not cheat-proof.</p>
+          </div>
+          <button class="leaderboard-refresh" id="leaderboardRefresh" type="button">REFRESH <span aria-hidden="true">↻</span></button>
+        </div>
+      </section>
+
+      <section class="how-to-play" id="how-to-play" aria-label="How to play">
+        <div class="guide-heading">
+          <span class="guide-icon" aria-hidden="true">✳</span>
+          <div>
+            <span class="panel-eyebrow">THE OLD WAYS</span>
+            <h2>How to survive the trial</h2>
+          </div>
+        </div>
+        <div class="guide-steps">
+          <div class="guide-step">
+            <span class="step-number">01</span>
+            <p><strong>Solve</strong> the equation as fast as you can.</p>
+          </div>
+          <div class="guide-step">
+            <span class="step-number">02</span>
+            <p><strong>Strike</strong> the dragon with every right answer.</p>
+          </div>
+          <div class="guide-step">
+            <span class="step-number">03</span>
+            <p><strong>Survive</strong> its flames and deplete its health to win.</p>
+          </div>
+        </div>
+        <div class="guide-note"><span>✦</span> Faster answers build your streak. Wrong answers don't cost health, but time keeps ticking.</div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span class="footer-mark" aria-hidden="true">✦</span>
+      <span>DRAGON'S TRIAL</span>
+      <span class="footer-divider">·</span>
+      <span>FORGED IN FIRE. SHARPENED BY MATH.</span>
+      <span class="footer-year">© <span id="year"></span></span>
+    </footer>
+
+    <script src="supabase-config.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
